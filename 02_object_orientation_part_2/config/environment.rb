@@ -18,7 +18,10 @@ require_relative "../lib/helper_methods.rb"
 # interact with the most recent version without restarting the console
 # define a `reload` method to load the lib/dog.rb file:
 def reload
+  puts "loading..."
   load "lib/pet.rb"
   load "lib/cat.rb"
   load "lib/dog.rb"
+  # load "lib/helper_methods.rb"
+  puts "done"
 end
