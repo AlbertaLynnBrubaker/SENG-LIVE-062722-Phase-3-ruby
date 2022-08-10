@@ -2,7 +2,7 @@ class Pet
     #Super class to Dog and Cat
     #Pet has a one-to-many relationship with Owner
     attr_reader :id
-    attr_accessor :name, :age, :breed, :image_url, :last_fed_at
+    attr_accessor :name, :age, :breed, :image_url, :last_fed_at, :owner_id
 
     @@all = []
     #Mass assignment example
@@ -14,6 +14,7 @@ class Pet
       @image_url = attributes[:image_url]
       @last_fed_at = nil
       @last_walked_at = nil
+      @owner_id = nil
       @@all << self
     end
 
@@ -30,6 +31,10 @@ class Pet
         @@all[idx]
     end 
 
+    def self.first
+      @@all[0]
+    end
+
     #Instance methods
     def print
         puts
@@ -40,6 +45,14 @@ class Pet
         puts "  Last fed at: #{format_time(self.last_fed_at)}"  unless(self.last_fed_at.nil?) 
         puts
         puts
+    end
+
+    def owner
+      Owner.all.find{ |o| o.id == self.owner_id}
+    end
+
+    def handlers
+      Appointment.all.filter{|a| a.pet_id == self.id}.map{|a| Handler.all.find{|h| h.id == a.handler_id}}
     end
 
     
