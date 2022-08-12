@@ -8,4 +8,10 @@
 - [ ] Observe creating & updating rows w/ built in AR methods
 - [ ] Observe how AR uses SQL “under the hood” to communicate with databases
 
+bundle exec rake db:create_migration NAME=handlers
 
+create_table :handlers do |t| 
+  t.string :email 
+  t.integer :phone
+  t.string :name
+end
