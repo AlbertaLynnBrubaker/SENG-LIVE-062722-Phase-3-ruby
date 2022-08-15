@@ -10,4 +10,9 @@
 - [ ] Observe using built in AR methods to access associated instances
 
 
-
+# Steps for Active Record
+1. Draw out your tables and set associations
+2. Create migrations
+3. Run migration to create tables
+4. Seed to populate tables with data
+5. Create Associations

@@ -172,11 +172,17 @@ $owner_data = [
     }
   ]
   
+  Appointment.destroy_all
+  Pet.destroy_all
+  Handler.destroy_all
+  Owner.destroy_all
 
-
-
+  $owner_data.each{|o| Owner.create(o)}
   $cats_data.each{|c| Pet.create(c)}
   $dogs_data.each{|d| Pet.create(d)}
   $handler_data.each{|h| Handler.create(h)}
+
+
+  10.times{Appointment.create({request:"walk", time: Time.now, handler_id: Handler.all.sample.id, pet_id: Pet.all.sample.id})}
 
 puts '🐈 Done! 🐕 '
